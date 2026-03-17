@@ -1,0 +1,22 @@
+# Copyright (C) 2024 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+# muyu-specific proprietary blobs
+# Source: stock HyperOS firmware CN OS3.0.11.0.WOYCNXM
+#
+# This file lists blobs that are specific to muyu (Xiaomi Pad 7 Pro)
+# and are NOT already covered by sm8635-common's proprietary-files.txt.
+#
+# TODO: Populate from analysis/muyu_specific_candidates.txt
+# See analysis/01-BLOB-ANALYSIS.md for hardware identification and priorities.
+#
+# Categories to add (in priority order):
+#   1. Camera HAL (odm/lib64/camera/, vendor/lib64/camera/) - Critical
+#   2. ISPV4 firmware/bins (odm/bin/ispv4_*, odm/firmware/ispv4_*) - Critical
+#   3. Touch HAL service (odm/bin/hw/vendor.xiaomi.hw.touchfeature-service) - High
+#   4. Audio spatial HAL (odm/bin/hw/vendor.xiaomi.hardware.seaaudio-service) - High
+#   5. Sensor configs (odm/etc/sensors/) - High
+#   6. Display tuning (odm/etc/disp0/) - High
+#   7. Audio tuning (odm/etc/audio/) - Critical
+#   8. Camera configs (odm/etc/camera/, vendor/etc/camera/) - Critical
+#   9. VINTF fragments (odm/etc/vintf/, vendor/etc/vintf/) - High
