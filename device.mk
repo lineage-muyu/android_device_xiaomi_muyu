@@ -8,16 +8,28 @@
 $(call inherit-product, device/xiaomi/sm8635-common/common.mk)
 
 # Kernel modules
-# muyu-kernel tree provides prebuilt kernel, dtb, dtbo and vendor_dlkm modules.
-# When device/xiaomi/muyu-kernel is present:
+# muyu-kernel tree layout (populated by its extract-files.sh from OTA zip):
+#   modules/vendor/   → vendor_dlkm partition (.ko + modules.load)
+#   modules/ramdisk/  → vendor_boot ramdisk   (.ko + modules.load)
+#   modules/system/   → system_dlkm partition  (GKI base modules)
 KERNEL_PATH := device/xiaomi/muyu-kernel
 
-ifneq ($(wildcard $(KERNEL_PATH)/modules/vendor_dlkm/modules.load),)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/vendor_dlkm/modules.load))
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/modules/vendor_dlkm/modules.blocklist
+# vendor_dlkm modules
+ifneq ($(wildcard $(KERNEL_PATH)/modules/vendor/modules.load),)
+BOARD_VENDOR_KERNEL_MODULES_LOAD           := $(strip $(shell cat $(KERNEL_PATH)/modules/vendor/modules.load))
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/modules/vendor/modules.blocklist
 
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/modules/vendor_dlkm/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules)
+    $(call find-copy-subdir-files,*.ko,$(KERNEL_PATH)/modules/vendor/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules)
+endif
+
+# vendor_boot ramdisk modules
+ifneq ($(wildcard $(KERNEL_PATH)/modules/ramdisk/modules.load),)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD           := $(strip $(shell cat $(KERNEL_PATH)/modules/ramdisk/modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/modules/ramdisk/modules.blocklist
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*.ko,$(KERNEL_PATH)/modules/ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
 endif
 
 # Soong namespaces
