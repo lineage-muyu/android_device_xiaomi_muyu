@@ -3,12 +3,12 @@
 #
 # muyu-specific proprietary blobs
 # Device: Xiaomi Pad 7 Pro (muyu)
-# Source: stock HyperOS firmware CN OS3.0.11.0.WOYCNXM
+# Source: stock HyperOS firmware Global OS3.0.7.0.WOYMIXM
 #
 # This file lists blobs specific to muyu that are NOT covered by
 # device/xiaomi/sm8635-common/proprietary-files.txt.
 #
-# DRAFT — requires verification on physical device.
+# DRAFT — re-analyzed from Global firmware (matches sm8635-common source).
 # Items marked [REVIEW] may overlap with sm8635-common vendor blobs.
 # Run extract-files.py against the physical device before first build.
 #
@@ -290,6 +290,9 @@ odm/firmware/water_check.tflite
 # Audio — MiSound spatial audio, speaker calibration, mixer config
 # Hardware: 4-speaker setup (bl/br/tl/tr + receiver)
 # -----------------------------------------------------------------
+
+# ODM audio policy (Global variant)
+odm/etc/audio_policy_engine_configuration_mi.xml
 
 # ODM audio tuning data
 odm/etc/audio/RES1K.wav
@@ -577,11 +580,9 @@ odm/etc/sensors/config/sx937x_reg_0.json
 # Service binaries
 odm/bin/hw/mfp-daemon
 odm/bin/hw/mifaced
-odm/bin/hw/mslgservice
 odm/bin/hw/vendor.xiaomi.hardware.dtool1-service
 odm/bin/hw/vendor.xiaomi.hardware.keyboardnanoapp_aidl-client
 odm/bin/hw/vendor.xiaomi.hardware.keyboardnanoapp_aidl-service
-odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl
 
 # Other ODM binaries
 odm/bin/midevauthd
@@ -601,7 +602,6 @@ odm/etc/init/init.ntag.rc
 odm/etc/init/miface.rc
 odm/etc/init/misensor_camera.rc
 odm/etc/init/mrm.rc
-odm/etc/init/mslgservice.rc
 odm/etc/init/vendor.xiaomi.hardware.aidl.midevauth@1.0-service.rc
 odm/etc/init/vendor.xiaomi.hardware.aidl.mtdservice-service.rc
 odm/etc/init/vendor.xiaomi.hardware.aidl.tidaservice-service.rc
@@ -663,12 +663,40 @@ vendor/etc/permissions/android.software.ipsec_tunnels.xml
 vendor/etc/permissions/android.software.midi.xml
 vendor/etc/permissions/android.software.opengles.deqp.level.xml
 vendor/etc/permissions/android.software.sip.voip.xml
+vendor/etc/permissions/xiaomi.global.hardware.features.xml
+
+# -----------------------------------------------------------------
+# GPU / Graphics (Global variant includes Adreno driver blobs)
+# [REVIEW: may be in sm8635-common or pulled from AOSP]
+# -----------------------------------------------------------------
+
+vendor/app/com.qualcomm.qti.gpudrivers.pineapple.api34/com.qualcomm.qti.gpudrivers.pineapple.api34.apk
+vendor/lib64/egl/eglSubDriverAndroid.so
+vendor/lib64/egl/libGLESv1_CM_adreno.so
+vendor/lib64/egl/libq3dtools_esx.so
+vendor/lib64/egl/libVkLayer_ADRENO_qprofiler.so
+vendor/lib64/hw/vulkan.adreno.so
+vendor/lib64/libadreno_app_profiles.so
+vendor/lib64/libadreno_utils.so
+vendor/lib64/libCB.so
+vendor/lib64/libgpudataproducer.so
+vendor/lib64/libgsl.so
+vendor/lib64/libkcl.so
+vendor/lib64/libkernelmanager.so
+vendor/lib64/libllvm-glnext.so
+vendor/lib64/libllvm-qcom.so
+vendor/lib64/libllvm-qgl.so
+vendor/lib64/libOpenCL.so
+vendor/lib64/libOpenCL_adreno.so
+vendor/lib64/libtensorflowlite_c.so
 
 # -----------------------------------------------------------------
 # Vendor VINTF and init [REVIEW: most entries likely in sm8635-common]
-# Included here since they appear in muyu CN firmware diff.
+# Included here since they appear in muyu Global firmware diff.
 # Cross-check against sm8635-common vendor tree before first build.
 # -----------------------------------------------------------------
+
+vendor/etc/vintf/manifest/bluetooth_audio.xml
 
 vendor/etc/vintf/compatibility_matrix.xml
 vendor/etc/vintf/manifest/ImsRtpService-aidl.xml
@@ -754,7 +782,6 @@ vendor/etc/init/vendor.qti.hardware.display.demura-service.rc
 vendor/etc/init/vendor.qti.hardware.lights.service.rc
 vendor/etc/init/vendor.qti.hardware.soter-service.rc
 vendor/etc/init/vendor.qti.hardware.wifi.wifilearner@1.0-service.rc
-vendor/etc/init/vendor.qti.qegahal-service.rc
 vendor/etc/init/vendor.qti.qspa-service.rc
 vendor/etc/init/vendor.qti.sla.service@2.0-service.rc
 vendor/etc/init/vendor.xiaomi.aidl.minet@1.0-service.rc

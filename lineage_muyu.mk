@@ -25,6 +25,6 @@ PRODUCT_MANUFACTURER := xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="muyu-user 14 UKQ1.240624.001 OS3.0.11.0.WOYCNXM release-keys" \
-    BuildFingerprint=Xiaomi/muyu/muyu:14/UKQ1.240624.001/OS3.0.11.0.WOYCNXM:user/release-keys \
+    BuildDesc="muyu_global-user 14 UKQ1.240624.001 OS3.0.7.0.WOYMIXM release-keys" \
+    BuildFingerprint=Xiaomi/muyu_global/muyu:14/UKQ1.240624.001/OS3.0.7.0.WOYMIXM:user/release-keys \
     DeviceProduct=muyu
