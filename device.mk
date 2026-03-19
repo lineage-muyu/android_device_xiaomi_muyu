@@ -14,22 +14,19 @@ $(call inherit-product, device/xiaomi/sm8635-common/common.mk)
 #   modules/system/   → system_dlkm partition  (GKI base modules)
 KERNEL_PATH := device/xiaomi/muyu-kernel
 
-# vendor_dlkm modules
+# vendor_dlkm modules — use BOARD_VENDOR_KERNEL_MODULES so the build system
+# copies the .ko files, runs depmod, and generates modules.load automatically.
 ifneq ($(wildcard $(KERNEL_PATH)/modules/vendor/modules.load),)
+BOARD_VENDOR_KERNEL_MODULES                := $(wildcard $(KERNEL_PATH)/modules/vendor/*.ko)
 BOARD_VENDOR_KERNEL_MODULES_LOAD           := $(strip $(shell cat $(KERNEL_PATH)/modules/vendor/modules.load))
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/modules/vendor/modules.blocklist
-
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*.ko,$(KERNEL_PATH)/modules/vendor/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules)
 endif
 
 # vendor_boot ramdisk modules
 ifneq ($(wildcard $(KERNEL_PATH)/modules/ramdisk/modules.load),)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD           := $(strip $(shell cat $(KERNEL_PATH)/modules/ramdisk/modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES           := $(wildcard $(KERNEL_PATH)/modules/ramdisk/*.ko)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD      := $(strip $(shell cat $(KERNEL_PATH)/modules/ramdisk/modules.load))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/modules/ramdisk/modules.blocklist
-
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*.ko,$(KERNEL_PATH)/modules/ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
 endif
 
 # Init

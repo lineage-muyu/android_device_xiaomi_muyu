@@ -54,6 +54,7 @@ libs_xiaomi_aidl = (
 # ODM-only native libs that aren't build targets
 libs_xiaomi_odm = (
     'libesesbprovision',
+    'libmfido',
     'libmidevauth',
     'libmiface',
     'libmlipay',
@@ -62,6 +63,8 @@ libs_xiaomi_odm = (
     'libRecordCNN',
     'libtida',
     'libvsim',
+    'vendor.xiaomi.hardware.mikeybag-impl',
+    'vendor.xiaomi.hardware.otrpagent@2.0-impl',
 )
 
 # Fingerprint/touch AIDL libs not available as build targets
