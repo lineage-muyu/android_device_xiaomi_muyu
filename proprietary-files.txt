@@ -672,8 +672,8 @@ odm/bin/ispv4_sensor_ctl
 odm/bin/ispv4_setpcie_speed
 odm/bin/ispv4_spi_rw
 odm/bin/ispv4_spi_st
-odm/bin/ispv4_utils_lspci
-odm/bin/ispv4_utils_setpci
+# odm/bin/ispv4_utils_lspci  # statically linked, build system can't resolve
+# odm/bin/ispv4_utils_setpci  # statically linked, build system can't resolve
 odm/bin/ispv4_utils_xxd
 odm/firmware/ispv4_ddr_train
 odm/firmware/ispv4_firmware
@@ -999,7 +999,7 @@ odm/etc/sensors/config/sx937x_reg_0.json
 
 # AIDL stub libraries (prebuilt from firmware, needed by ODM services)
 odm/lib64/vendor.xiaomi.hardware.aidl.midevauth-V1-ndk_platform.so
-odm/lib64/vendor.xiaomi.hardware.mediaeventgatherservice-V1-ndk.so
+# odm/lib64/vendor.xiaomi.hardware.mediaeventgatherservice-V1-ndk.so  # in sm8635-common
 odm/lib64/vendor.xiaomi.hardware.misauth-V1-ndk_platform.so
 odm/lib64/vendor.xiaomi.hardware.mrm-V1-ndk_platform.so
 odm/lib64/vendor.xiaomi.hardware.seaaudio-V1-ndk.so
