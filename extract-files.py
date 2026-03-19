@@ -26,11 +26,21 @@ namespace_imports = [
     'vendor/qcom/opensource/commonsys/display',
     'vendor/qcom/opensource/commonsys-intf/display',
     'vendor/qcom/opensource/dataservices',
+    'vendor/xiaomi/sm8635-common',
 ]
 
-lib_fixups: lib_fixups_user_type = {}
+lib_fixups: lib_fixups_user_type = {
+    'android.hardware.graphics.allocator-V1-ndk': 'android.hardware.graphics.allocator-V2-ndk',
+}
 
-blob_fixups: blob_fixups_user_type = {}  # fmt: skip
+blob_fixups: blob_fixups_user_type = {
+    'odm/etc/camera/enhance_motiontuning.xml': blob_fixup()
+        .regex_replace(r'<\?xml=version', '<?xml version'),
+    'odm/etc/camera/motiontuning.xml': blob_fixup()
+        .regex_replace(r'<\?xml=version', '<?xml version'),
+    'odm/etc/camera/night_motiontuning.xml': blob_fixup()
+        .regex_replace(r'<\?xml=version', '<?xml version'),
+}
 
 module = ExtractUtilsModule(
     'muyu',

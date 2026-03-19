@@ -1,0 +1,21 @@
+# Copyright (C) 2024 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# muyu-specific init commands
+
+on boot
+    # Touch (Novatek NT36532)
+    chown system system /sys/class/touch/touch_dev/palm_sensor
+    chmod 0664 /sys/class/touch/touch_dev/palm_sensor
+
+    # Display
+    chown system system /sys/class/backlight/panel0-backlight/brightness
+    chmod 0664 /sys/class/backlight/panel0-backlight/brightness
+
+    # IR blaster
+    chown system system /dev/spidev0.0
+    chmod 0660 /dev/spidev0.0
+
+on property:sys.boot_completed=1
+    # Set default refresh rate after boot
+    setprop vendor.display.default_fps 120

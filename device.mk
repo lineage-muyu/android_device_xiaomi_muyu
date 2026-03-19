@@ -32,6 +32,42 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*.ko,$(KERNEL_PATH)/modules/ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
 endif
 
+# Init
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.muyu.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.muyu.rc
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
+
+# ODM VINTF manifest fragments (not handled by extract-utils Android.bp)
+ODM_MANIFEST_FILES += \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/AHBF-V3-service.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/fod-aidl.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.aidl.midevauth.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.aidl.mtdservice.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.aidl.tidaservice.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mfidoca.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.otrpagent@2.0.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.vsimapp.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/miface.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/misensor_camera.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/mrm.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/vendor.xiaomi.hardware.keyboardnanoapp_aidl-service.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/vendor.xiaomi.hardware.mikeybag.xml \
+    vendor/xiaomi/muyu/proprietary/odm/etc/vintf/manifest/vendor.xiaomi.hardware.seaaudio.xml
+
+# ODM init scripts not installed by extract-utils
+PRODUCT_COPY_FILES += \
+    vendor/xiaomi/muyu/proprietary/odm/etc/init/vendor.xiaomi.hardware.dtool1.rc:$(TARGET_COPY_OUT_ODM)/etc/init/vendor.xiaomi.hardware.dtool1.rc
+
+# Vendor kernel headers (Qualcomm display/audio headers from prebuilt kernel)
+# The generated_kernel_includes module runs 'make headers_install' which only
+# exports standard UAPI headers. Qualcomm vendor headers (display/media, etc.)
+# are only in the prebuilt kernel-headers/ and must be injected separately.
+PRODUCT_VENDOR_KERNEL_HEADERS += device/xiaomi/muyu-kernel/qcom/kernel-headers
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     device/xiaomi/muyu

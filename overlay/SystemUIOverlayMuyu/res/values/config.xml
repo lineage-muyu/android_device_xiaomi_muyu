@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Status bar height (tablet-appropriate) -->
+    <dimen name="status_bar_height_portrait">28dp</dimen>
+    <dimen name="status_bar_height_landscape">24dp</dimen>
+
+    <!-- Rounded corner radius for SystemUI -->
+    <dimen name="rounded_corner_content_padding">12dp</dimen>
+</resources>

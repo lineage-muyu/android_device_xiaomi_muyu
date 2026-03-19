@@ -1,0 +1,7 @@
+# muyu-specific file contexts
+
+# Touch
+/sys/class/touch/touch_dev(/.*)?    u:object_r:sysfs_touch:s0
+
+# IR blaster
+/dev/spidev0\.0                     u:object_r:spidev_device:s0

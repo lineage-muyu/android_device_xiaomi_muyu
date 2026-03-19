@@ -1,0 +1,6 @@
+# muyu-specific SELinux policy stubs
+# TODO: Add proper policies after first successful boot analysis
+
+# Type declarations for muyu file_contexts
+type sysfs_touch, sysfs_type, fs_type;
+type spidev_device, dev_type;

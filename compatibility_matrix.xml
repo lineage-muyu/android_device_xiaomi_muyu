@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compatibility-matrix version="1.0" type="framework">
+    <!-- Xiaomi ODM HAL interfaces declared on muyu -->
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.aidl.midevauth</name>
+        <interface><name>IMidevauthService</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.aidl.mtdservice</name>
+        <interface><name>IMTService</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.aidl.tidaservice</name>
+        <interface><name>ITidaService</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.keyboardnanoapp_aidl</name>
+        <interface><name>IKeyboardNanoapp_aidl</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mfidoca</name>
+        <interface><name>IFidoService</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mikeybag</name>
+        <interface><name>IMiKeyBagService</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.misauth</name>
+        <interface><name>IMiSharedAuth</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mlipay</name>
+        <interface><name>IMlipayService</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mrm</name>
+        <interface><name>IMiCertificate</name><instance>default</instance></interface>
+        <interface><name>IMrm</name><instance>default</instance></interface>
+        <interface><name>IMrmRemoteAuth</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.otrpagent2</name>
+        <interface><name>IOTrPAgent</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.seaaudio</name>
+        <interface><name>ISeaAudio</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.seccam</name>
+        <interface><name>IMiSecCam</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.vsimapp</name>
+        <interface><name>IVSIMService</name><instance>default</instance></interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.sensor.camera</name>
+        <interface><name>IMiCam</name><instance>default</instance></interface>
+    </hal>
+</compatibility-matrix>

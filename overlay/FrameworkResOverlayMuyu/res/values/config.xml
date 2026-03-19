@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Screen density -->
+    <integer name="config_screenBrightnessDimFloat">1</integer>
+
+    <!-- Default peak refresh rate -->
+    <integer name="config_defaultPeakRefreshRate">144</integer>
+
+    <!-- Default refresh rate -->
+    <integer name="config_defaultRefreshRate">120</integer>
+
+    <!-- Rounded corner radius (48px from stock) -->
+    <dimen name="rounded_corner_radius">48px</dimen>
+    <dimen name="rounded_corner_radius_top">48px</dimen>
+    <dimen name="rounded_corner_radius_bottom">48px</dimen>
+
+    <!-- Indicate whether closing the lid causes the device to go to sleep
+         and opening it causes the device to wake up. -->
+    <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Device is a tablet (affects UI layout) -->
+    <bool name="config_showNavigationBar">true</bool>
+
+    <!-- HDR display capabilities -->
+    <bool name="config_hasHdrDisplay">true</bool>
+</resources>
