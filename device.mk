@@ -29,6 +29,16 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD      := $(strip $(shell cat $(KERNEL_PA
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/modules/ramdisk/modules.blocklist
 endif
 
+# Fingerprint/biometrics AIDL stubs — must use PRODUCT_COPY_FILES because
+# Soong rejects prebuilt vendor modules that share names with AOSP system modules.
+# Note: android.hardware.biometrics.fingerprint-V3-ndk is already installed by AOSP.
+PRODUCT_COPY_FILES += \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/com.fingerprints.extension3-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/com.fingerprints.extension3-V1-ndk.so \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/com.fingerprints.fpc.extension-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/com.fingerprints.fpc.extension-V1-ndk.so \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.qti.hardware.fingerprint-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.hardware.fingerprint-V1-ndk.so \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so
+
 # Init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.muyu.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.muyu.rc

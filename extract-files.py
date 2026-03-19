@@ -87,8 +87,7 @@ def _lib_fixup_version_bump(lib: str, partition: str) -> str:
 
 lib_fixups: lib_fixups_user_type = {
     'android.hardware.graphics.allocator-V1-ndk': _lib_fixup_version_bump,
-    # Biometrics V3 conflicts with V4 in the source tree — remove to avoid
-    # multiple-version AIDL errors. The correct version loads at runtime.
+    # Biometrics V3 — remove to avoid V3/V4 AIDL version conflicts.
     ('android.hardware.biometrics.common-V3-ndk',
      'android.hardware.biometrics.fingerprint-V3-ndk'): lib_fixup_remove,
     libs_xiaomi_aidl: lib_fixup_remove,

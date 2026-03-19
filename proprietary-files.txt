@@ -997,6 +997,12 @@ odm/etc/sensors/config/sx937x_reg_0.json
 # ODM services — binaries, init scripts, VINTF fragments
 # -----------------------------------------------------------------
 
+# Fingerprint/biometrics runtime libs (needed by mfp-daemon, mifaced)
+# android.hardware.biometrics.fingerprint-V3-ndk — provided by AOSP (system partition)
+# com.fingerprints.* and vendor.qti/xiaomi fingerprint — removed from shared_libs
+# via lib_fixup_remove, loaded at runtime from vendor partition (sm8635-common)
+odm/lib64/libmiface.so
+
 # AIDL stub libraries (prebuilt from firmware, needed by ODM services)
 odm/lib64/vendor.xiaomi.hardware.aidl.midevauth-V1-ndk_platform.so
 # odm/lib64/vendor.xiaomi.hardware.mediaeventgatherservice-V1-ndk.so  # in sm8635-common
