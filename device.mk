@@ -37,7 +37,14 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/muyu/proprietary/vendor/lib64/com.fingerprints.fpc.extension-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/com.fingerprints.fpc.extension-V1-ndk.so \
     vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.qti.hardware.fingerprint-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.hardware.fingerprint-V1-ndk.so \
     vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so \
-    vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.xiaomi.hardware.mikeybag-V1-ndk_platform.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.xiaomi.hardware.mikeybag-V1-ndk_platform.so \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/vendor.xiaomi.hardware.otrpagent2-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.xiaomi.hardware.otrpagent2-V1-ndk.so \
+    vendor/xiaomi/muyu/proprietary/vendor/lib64/libesesbprovision.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libesesbprovision.so
+
+# ODM libs missing from extract-utils (deps removed via lib_fixup_remove)
+PRODUCT_COPY_FILES += \
+    vendor/xiaomi/muyu/proprietary/odm/lib64/libmiriskmanager.so:$(TARGET_COPY_OUT_ODM)/lib64/libmiriskmanager.so
 
 # Init
 PRODUCT_COPY_FILES += \
